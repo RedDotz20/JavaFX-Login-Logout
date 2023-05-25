@@ -1,6 +1,6 @@
-package com.loginlogout.frames;
+package main.loginlogout.frames;
 
-import com.connection.connectionUtil;
+import main.connection.connectionUtil;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
