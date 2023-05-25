@@ -1,6 +1,6 @@
 package com.loginlogout.frames;
 
-import connection.connectionUtil;
+import com.connection.connectionUtil;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -14,8 +14,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -43,8 +41,9 @@ public class FXMLDocumentController implements Initializable {
     private void handleButtonAction(ActionEvent event) {
         String email = textUser.getText();
         String password = textPassword.getText();
-
         String sql = "SELECT * FROM users WHERE username = ? and password = ?";
+        
+         alertMessage alert = new alertMessage();
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -52,9 +51,11 @@ public class FXMLDocumentController implements Initializable {
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
-                infoBox("Enter Correct Email and Password", "Failed", null);
+//                infoBox("Enter Correct Email and Password", "Failed", null);
+                alert.errorMessage("Invalid Username or Password");
             } else {
-                infoBox("Login Successfull", "Success", null);
+//                infoBox("Login Successfull", "Success", null);
+                alert.successMessage("Login Successfull!");
                 Node source = (Node) event.getSource();
                 dialogStage = (Stage) source.getScene().getWindow();
                 dialogStage.close();
@@ -66,14 +67,6 @@ public class FXMLDocumentController implements Initializable {
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void infoBox(String infoMessage, String titleBar, String headerMessage) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle(titleBar);
-        alert.setHeaderText(headerMessage);
-        alert.setContentText(infoMessage);
-        alert.showAndWait();
     }
 
     @Override
