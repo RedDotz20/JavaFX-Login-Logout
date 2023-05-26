@@ -14,6 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,10 +23,19 @@ import javafx.stage.Stage;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
-    private TextField textUser;
+    private Button button;
+
+    @FXML
+    private Label label;
+
+    @FXML
+    private Button registerBtn;
 
     @FXML
     private PasswordField textPassword;
+
+    @FXML
+    private TextField textUser;
 
     Stage dialogStage = new Stage();
     Scene scene;
