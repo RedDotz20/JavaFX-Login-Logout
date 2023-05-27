@@ -1,4 +1,4 @@
-package main.loginlogout.frames;
+package loginlogout;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

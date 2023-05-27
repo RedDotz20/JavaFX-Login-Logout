@@ -1,4 +1,4 @@
-package main.loginlogout.frames;
+package loginlogout;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="599.0" prefWidth="306.0" stylesheets="@./style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.loginlogout.frames.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="599.0" prefWidth="306.0" stylesheets="@./style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginlogout.FXMLDocumentController">
     <children>
         <Button fx:id="button" layoutX="35.0" layoutY="300.0" onAction="#handleButtonAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" stylesheets="@./style.css" text="Login" />
         <Label fx:id="label" layoutX="113.0" layoutY="214.0" prefHeight="24.0" prefWidth="150.0" />
