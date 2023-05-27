@@ -1,0 +1,24 @@
+.white-bg{
+    -fx-background-color: #fff;
+}
+
+.btn {
+    -fx-background-color: #1A3358;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-family: Arial;
+} 
+.btn:hover {
+    -fx-background-color: #3A5579;
+}
+
+.textfield {
+    -fx-border-color: #000;
+    -fx-border-width: .5px;
+}
+
+.textfield:focused{
+    -fx-border-color: #fff;
+    -fx-border-width: .8px;
+}
