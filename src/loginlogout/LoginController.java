@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -30,7 +31,11 @@ public class LoginController implements Initializable {
   @FXML
   private PasswordField textPassword;
 
-  Scene scene;
+  @FXML
+  private Button loginButton;
+
+  @FXML
+  private Button registerButton;
 
   Connection connection = null;
   PreparedStatement preparedStatement = null;
@@ -45,7 +50,7 @@ public class LoginController implements Initializable {
   }
 
   @FXML
-  private void handleLoginAction(ActionEvent event) {
+  private void handleLoginAction(ActionEvent event) throws IOException {
     String email = textUser.getText();
     String password = textPassword.getText();
     String sql = "SELECT * FROM users WHERE username = ? and password = ?";
@@ -61,29 +66,42 @@ public class LoginController implements Initializable {
         alert.errorMessage("Invalid Username or Password");
       } else {
         alert.successMessage("LOGIN SUCCESSFUL");
-        Node source = (Node) event.getSource();
+//        Node source = (Node) event.getSource();
 
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+        Stage primaryStage = (Stage) loginButton.getScene().getWindow();
+//        primaryStage.close();
 
-        scene = new Scene(FXMLLoader.load(getClass().getResource("Home.fxml")));
-        stage.setScene(scene);
-        stage.show();
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Home.fxml")));
+        primaryStage.setScene(scene);
+        primaryStage.show();
       }
 
-    } catch (IOException | SQLException e) {
+    } catch (SQLException e) {
       alert.errorMessage("An error occured: " + e.getMessage());
     }
+  }
+
+  @FXML
+  private void handleRegisterAction(ActionEvent event) throws IOException {
+    alertMessage alert = new alertMessage();
+
+//    Node source = (Node) event.getSource();
+    Stage primaryStage = (Stage) registerButton.getScene().getWindow();
+
+    Stage stage = (Stage) primaryStage.getScene().getWindow();
+    stage.close();
+
+    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Home.fxml")));
+    stage.setScene(scene);
+    stage.show();
   }
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     textUser.setPromptText(null);
     textPassword.setPromptText(null);
-    
-    Platform.runLater(() -> {
-      textUser.requestFocus();
-    });
+
+    Platform.runLater(() -> textUser.requestFocus());
 
     textUser.setOnKeyPressed(event -> {
       if (event.getCode().equals(KeyCode.ENTER)) {
@@ -93,7 +111,11 @@ public class LoginController implements Initializable {
 
     textPassword.setOnKeyPressed(event -> {
       if (event.getCode().equals(KeyCode.ENTER)) {
-        handleLoginAction(new ActionEvent());
+        try {
+          handleLoginAction(new ActionEvent());
+        } catch (IOException ex) {
+          Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
       }
     });
 

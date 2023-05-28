@@ -10,13 +10,13 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="300.0" stylesheets="@./style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginlogout.LoginController">
-    <children>
-        <Button fx:id="button" layoutX="36.0" layoutY="301.0" onAction="#handleLoginAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" stylesheets="@./style.css" text="Sign In" />
+    <children> 
         <Label fx:id="label" layoutX="113.0" layoutY="214.0" prefHeight="24.0" prefWidth="150.0" />
         <TextField fx:id="textUser" layoutX="35.0" layoutY="180.0" prefHeight="34.0" prefWidth="236.0" promptText="Username" />
         <PasswordField fx:id="textPassword" layoutX="35.0" layoutY="238.0" prefHeight="34.0" prefWidth="236.0" promptText="Password" />
 <!--        <FontAwesomeIcon fill="#1a3358" glyphName="USER" layoutX="129.0" layoutY="124.0" size="5em" />-->
-        <Button fx:id="registerBtn" layoutX="35.0" layoutY="355.0" onAction="#handleLoginAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" text="Sign Up" />
+        <Button fx:id="loginButton" layoutX="36.0" layoutY="301.0" onAction="#handleLoginAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" stylesheets="@./style.css" text="Sign In" />
+        <Button fx:id="registerButton" layoutX="35.0" layoutY="355.0" onAction="#handleRegisterAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" text="Sign Up" />
         <Label layoutX="52.0" layoutY="122.0" text="JavaFX Login Logout">
             <font>
                 <Font name="Arial Bold" size="20.0" />
