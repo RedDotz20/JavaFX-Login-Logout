@@ -15,7 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+//import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -89,18 +89,15 @@ public class LoginController implements Initializable {
     Stage primaryStage = (Stage) registerButton.getScene().getWindow();
 
     Stage stage = (Stage) primaryStage.getScene().getWindow();
-    stage.close();
+//    stage.close();
 
-    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Home.fxml")));
+    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Register.fxml")));
     stage.setScene(scene);
     stage.show();
   }
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    textUser.setPromptText(null);
-    textPassword.setPromptText(null);
-
     Platform.runLater(() -> textUser.requestFocus());
 
     textUser.setOnKeyPressed(event -> {
