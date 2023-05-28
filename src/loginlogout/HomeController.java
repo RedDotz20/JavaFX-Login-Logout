@@ -19,20 +19,25 @@ public class HomeController implements Initializable {
   private Button logoutButton;
   @FXML
   private Label headerText;
+  
+  private String user_id;
   private String username;
+  private String password;
 
-  public void setUserData(String username) {
+  public void setUserData(String user_id, String username, String password) {
+    this.user_id = user_id;
     this.username = username;
+    this.password = password;
     updateHeaderText();
   }
-
+  
   private void updateHeaderText() {
     String firstCharacter = username.substring(0, 1).toUpperCase();
     String remainingCharacters = username.substring(1).toLowerCase();
     String formattedUsername = firstCharacter + remainingCharacters;
     headerText.setText("Welcome, " + formattedUsername + "!");
   }
-
+  
   @FXML
   private void handleLogoutAction(ActionEvent event) throws IOException {
     alertMessage alert = new alertMessage();
@@ -50,6 +55,11 @@ public class HomeController implements Initializable {
     Stage loginStage = new Stage();
     loginStage.setScene(new Scene(loginRoot));
     loginStage.show();
+  }
+  
+  @FXML
+  private void handleDeleteAction(ActionEvent event) throws IOException {
+    
   }
 
   @Override

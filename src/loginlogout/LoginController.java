@@ -72,7 +72,12 @@ public class LoginController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
         Parent homeRoot = loader.load();
         HomeController homeController = loader.getController();
-        homeController.setUserData(username);
+
+        String retrievedUsername = resultSet.getString("username");
+        String retrievedPassword = resultSet.getString("password");
+        String retrievedId = resultSet.getString("user_id");
+
+        homeController.setUserData(retrievedId, retrievedUsername, retrievedPassword);
 
         Stage primaryStage = (Stage) loginButton.getScene().getWindow();
         primaryStage.setScene(new Scene(homeRoot));
