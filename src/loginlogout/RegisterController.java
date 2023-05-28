@@ -59,30 +59,33 @@ public class RegisterController implements Initializable {
     alertMessage alert = new alertMessage();
 
     try {
-      preparedStatement = connection.prepareStatement(registerQuery);
-      preparedStatement.setString(1, username);
-      preparedStatement.setString(2, password);
-      preparedStatement.setString(3, username);
-
-      int rowsAffected = preparedStatement.executeUpdate();
-
-      if (!password.equals(confirmPassword)) {
+      if (username.isEmpty() || password.isEmpty()) {
+        alert.errorMessage("Invalid Credentials, Please Try Again");
+      } else if (!password.equals(confirmPassword)) {
         alert.errorMessage("Password does not match.");
-      } else if (rowsAffected == 0) {
-        alert.errorMessage("Username already exists. Please try a different username.");
       } else {
-        alert.successMessage("Your new user account has been registered successfully.");
+        preparedStatement = connection.prepareStatement(registerQuery);
+        preparedStatement.setString(1, username);
+        preparedStatement.setString(2, password);
+        preparedStatement.setString(3, username);
 
-        Stage primaryStage = (Stage) registerUserButton.getScene().getWindow();
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Home.fxml")));
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        int rowsAffected = preparedStatement.executeUpdate();
+
+        if (rowsAffected == 0) {
+          alert.errorMessage("Username already exists. Please try a different username.");
+        } else {
+          alert.successMessage("Your new user account has been registered successfully.");
+          Stage primaryStage = (Stage) registerUserButton.getScene().getWindow();
+          Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Home.fxml")));
+          primaryStage.setScene(scene);
+          primaryStage.show();
+        }
       }
     } catch (SQLException e) {
       alert.errorMessage("An error occurred: " + e.getMessage());
     }
   }
-  
+
   @FXML
   private void handleCancelAction(ActionEvent event) throws IOException {
     Stage primaryStage = (Stage) cancelButton.getScene().getWindow();

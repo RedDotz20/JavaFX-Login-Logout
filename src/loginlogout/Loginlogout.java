@@ -9,11 +9,14 @@ import javafx.stage.Stage;
 public class Loginlogout extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("JavaFX Application");
+        primaryStage.setResizable(false);
+        
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
