@@ -83,8 +83,6 @@ public class LoginController implements Initializable {
 
   @FXML
   private void handleRegisterAction(ActionEvent event) throws IOException {
-    alertMessage alert = new alertMessage();
-
 //    Node source = (Node) event.getSource();
     Stage primaryStage = (Stage) registerButton.getScene().getWindow();
 
