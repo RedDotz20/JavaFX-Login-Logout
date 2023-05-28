@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -33,6 +34,8 @@ public class LoginController implements Initializable {
   @FXML
   private Button registerButton;
 
+  private HomeController homeController;
+
   Connection connection = null;
   PreparedStatement preparedStatement = null;
   ResultSet resultSet = null;
@@ -43,6 +46,10 @@ public class LoginController implements Initializable {
     } catch (SQLException ex) {
       Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
     }
+  }
+
+  public void setHomeController(HomeController homeController) {
+    this.homeController = homeController;
   }
 
   @FXML
@@ -62,10 +69,13 @@ public class LoginController implements Initializable {
         alert.errorMessage("Invalid Username or Password");
       } else {
         alert.successMessage("LOGIN SUCCESSFUL");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+        Parent homeRoot = loader.load();
+        HomeController homeController = loader.getController();
+        homeController.setUserData(username);
 
         Stage primaryStage = (Stage) loginButton.getScene().getWindow();
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Home.fxml")));
-        primaryStage.setScene(scene);
+        primaryStage.setScene(new Scene(homeRoot));
         primaryStage.show();
       }
 
@@ -76,12 +86,8 @@ public class LoginController implements Initializable {
 
   @FXML
   private void handleRegisterAction(ActionEvent event) throws IOException {
-//    Node source = (Node) event.getSource();
     Stage primaryStage = (Stage) registerButton.getScene().getWindow();
-
     Stage stage = (Stage) primaryStage.getScene().getWindow();
-//    stage.close();
-
     Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Register.fxml")));
     stage.setScene(scene);
     stage.show();
