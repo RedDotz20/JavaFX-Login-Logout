@@ -15,7 +15,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-//import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -27,13 +26,10 @@ public class LoginController implements Initializable {
 
   @FXML
   private TextField textUser;
-
   @FXML
   private PasswordField textPassword;
-
   @FXML
   private Button loginButton;
-
   @FXML
   private Button registerButton;
 
@@ -51,26 +47,23 @@ public class LoginController implements Initializable {
 
   @FXML
   private void handleLoginAction(ActionEvent event) throws IOException {
-    String email = textUser.getText();
+    String username = textUser.getText();
     String password = textPassword.getText();
-    String sql = "SELECT * FROM users WHERE username = ? and password = ?";
+    String loginQuery = "SELECT * FROM users WHERE username = ? and password = ?";
 
     alertMessage alert = new alertMessage();
 
     try {
-      preparedStatement = connection.prepareStatement(sql);
-      preparedStatement.setString(1, email);
+      preparedStatement = connection.prepareStatement(loginQuery);
+      preparedStatement.setString(1, username);
       preparedStatement.setString(2, password);
       resultSet = preparedStatement.executeQuery();
       if (!resultSet.next()) {
         alert.errorMessage("Invalid Username or Password");
       } else {
         alert.successMessage("LOGIN SUCCESSFUL");
-//        Node source = (Node) event.getSource();
 
         Stage primaryStage = (Stage) loginButton.getScene().getWindow();
-//        primaryStage.close();
-
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Home.fxml")));
         primaryStage.setScene(scene);
         primaryStage.show();
