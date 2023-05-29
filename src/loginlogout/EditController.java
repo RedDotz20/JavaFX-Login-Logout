@@ -64,7 +64,51 @@ public class EditController implements Initializable {
 
   @FXML
   private void handleEditAction(ActionEvent event) throws IOException {
+    alertMessage alert = new alertMessage();
 
+    String newUsername = textUser.getText();
+    String newPassword = textPassword.getText();
+    String confirmPassword = textConfirmPassword.getText();
+
+    if (newUsername.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+      alert.errorMessage("Please fill in all fields.");
+      return;
+    }
+
+    if (!newPassword.equals(confirmPassword)) {
+      alert.errorMessage("New password and confirm password does not match");
+      return;
+    }
+
+    try {
+      String updateQuery = "UPDATE users SET username = ?, password = ? WHERE user_id = ?";
+      preparedStatement = connection.prepareStatement(updateQuery);
+      preparedStatement.setString(1, newUsername);
+      preparedStatement.setString(2, newPassword);
+      preparedStatement.setString(3, user_id);
+      int rowsAffected = preparedStatement.executeUpdate();
+
+      if (rowsAffected > 0) {
+        alert.successMessage("User data updated successfully!");
+
+        username = newUsername;
+        password = newPassword;
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+        Parent homeRoot = loader.load();
+        HomeController homeController = loader.getController();
+        homeController.setUserData(user_id, username, password); // Pass the user data to HomeController
+        Stage primaryStage = (Stage) cancelButton.getScene().getWindow();
+        primaryStage.setScene(new Scene(homeRoot));
+        primaryStage.show();
+
+      } else {
+        alert.errorMessage("Failed to update user data.");
+      }
+
+    } catch (SQLException e) {
+      alert.errorMessage("An error occured: " + e.getMessage());
+    }
   }
 
   @FXML
