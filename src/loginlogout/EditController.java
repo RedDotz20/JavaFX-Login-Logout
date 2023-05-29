@@ -1,0 +1,86 @@
+package loginlogout;
+
+import connection.connectionUtil;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+public class EditController implements Initializable {
+
+  private String user_id;
+  private String username;
+  private String password;
+
+  @FXML
+  private TextField textUser;
+  @FXML
+  private PasswordField textPassword;
+  @FXML
+  private PasswordField textConfirmPassword;
+  @FXML
+  private Button editUserButton;
+  @FXML
+  private Button cancelButton;
+
+  public void setUserData(String user_id, String username, String password) {
+    this.user_id = user_id;
+    this.username = username;
+    this.password = password;
+    setTextFieldDefault();
+  }
+
+  private void setTextFieldDefault() {
+    textUser.setText(username);
+    textPassword.setText(password);
+  }
+
+  Connection connection = null;
+  PreparedStatement preparedStatement = null;
+  ResultSet resultSet = null;
+
+  public EditController() {
+    try {
+      connection = connectionUtil.connectdb();
+    } catch (SQLException ex) {
+      Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+
+  @FXML
+  private void handleEditAction(ActionEvent event) throws IOException {
+
+  }
+
+  @FXML
+  private void handleCancelAction(ActionEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+    Parent homeRoot = loader.load();
+    HomeController homeController = loader.getController();
+    homeController.setUserData(user_id, username, password); // Pass the user data to HomeController
+    Stage primaryStage = (Stage) cancelButton.getScene().getWindow();
+    primaryStage.setScene(new Scene(homeRoot));
+    primaryStage.show();
+  }
+
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    // TODO
+  }
+
+}

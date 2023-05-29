@@ -16,7 +16,7 @@
       </Label>
       <Button fx:id="deleteButton" layoutX="32.0" layoutY="425.0" onAction="#handleDeleteAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" stylesheets="@style.css" text="DELETE USER ACCOUNT" />
       <Button fx:id="logoutButton" layoutX="32.0" layoutY="363.0" onAction="#handleLogoutAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" stylesheets="@style.css" text="LOGOUT" />
-      <Button fx:id="editButton" layoutX="32.0" layoutY="303.0" onAction="#handleLogoutAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" stylesheets="@style.css" text="EDIT USER ACCOUNT" />
+      <Button fx:id="editButton" layoutX="32.0" layoutY="303.0" onAction="#handleEditAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" stylesheets="@style.css" text="EDIT USER ACCOUNT" />
       <!--<Button fx:id="button" layoutX="183.0" layoutY="262.0" onAction="#handleButtonAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" stylesheets="@style.css" text="LOGOUT" />-->
    </children>
 </AnchorPane>

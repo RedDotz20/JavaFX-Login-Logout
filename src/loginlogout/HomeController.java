@@ -132,8 +132,20 @@ public class HomeController implements Initializable {
       alert.errorMessage("User not found or already deleted");
     }
   }
-
+  
   private void cancelAction() {}
+  
+  @FXML
+  private void handleEditAction(ActionEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Edit.fxml"));
+    Parent editRoot = loader.load();
+    EditController editController = loader.getController();
+    editController.setUserData(user_id, username, password); // Pass the data to the EditController
+
+    Stage primaryStage = (Stage) logoutButton.getScene().getWindow();
+    primaryStage.setScene(new Scene(editRoot));
+    primaryStage.show();
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle rb) {
