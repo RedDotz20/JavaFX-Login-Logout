@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 public class RegisterController implements Initializable {
@@ -96,7 +98,28 @@ public class RegisterController implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    // TODO
-  }
+    Platform.runLater(() -> textUser.requestFocus());
 
+    textUser.setOnKeyPressed(event -> {
+      if (event.getCode().equals(KeyCode.ENTER)) {
+        textPassword.requestFocus();
+      }
+    });
+
+    textPassword.setOnKeyPressed(event -> {
+      if (event.getCode().equals(KeyCode.ENTER)) {
+        textConfirmPassword.requestFocus();
+      }
+    });
+
+    textConfirmPassword.setOnKeyPressed(event -> {
+      if (event.getCode().equals(KeyCode.ENTER)) {
+        try {
+          handleRegisterAction(new ActionEvent());
+        } catch (IOException ex) {
+          Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      }
+    });
+  }
 }
