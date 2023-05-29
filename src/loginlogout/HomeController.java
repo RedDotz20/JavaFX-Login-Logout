@@ -133,10 +133,7 @@ public class HomeController implements Initializable {
     }
   }
 
-  private void cancelAction() {
-    // Implement the cancel action here
-    System.out.println("Cancel button clicked");
-  }
+  private void cancelAction() {}
 
   @Override
   public void initialize(URL location, ResourceBundle rb) {
