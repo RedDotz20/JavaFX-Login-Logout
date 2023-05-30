@@ -76,9 +76,10 @@ public class RegisterController implements Initializable {
         if (rowsAffected == 0) {
           alert.errorMessage("Username already exists. Please try a different username.");
         } else {
-          alert.successMessage("Your new user account has been registered successfully.");
+          alert.successMessage("Your new account has been registered successfully.\nPlease Login again to continue.");
           Stage primaryStage = (Stage) registerUserButton.getScene().getWindow();
-          Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Home.fxml")));
+          primaryStage.close();
+          Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Login.fxml")));
           primaryStage.setScene(scene);
           primaryStage.show();
         }
