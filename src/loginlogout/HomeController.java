@@ -55,10 +55,7 @@ public class HomeController implements Initializable {
   }
 
   private void updateHeaderText() {
-    String firstCharacter = username.substring(0, 1).toUpperCase();
-    String remainingCharacters = username.substring(1).toLowerCase();
-    String formattedUsername = firstCharacter + remainingCharacters;
-    headerText.setText("Welcome, " + formattedUsername + "!");
+    headerText.setText(username);
   }
 
   @FXML

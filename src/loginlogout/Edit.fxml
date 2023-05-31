@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -11,18 +12,19 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="loginlogout.EditController">
    <children>
-      <Label layoutX="63.0" layoutY="64.0" text="Edit User Account">
+      <Label layoutX="63.0" layoutY="113.0" text="Edit User Account">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="textUser" layoutX="32.0" layoutY="146.0" prefHeight="34.0" prefWidth="236.0" />
-      <Text layoutX="33.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-      <PasswordField fx:id="textPassword" layoutX="32.0" layoutY="211.0" prefHeight="34.0" prefWidth="236.0" />
-      <Text layoutX="32.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-      <PasswordField fx:id="textConfirmPassword" layoutX="32.0" layoutY="278.0" prefHeight="34.0" prefWidth="236.0" />
-      <Text layoutX="32.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-Type Password" />
+      <TextField fx:id="textUser" layoutX="32.0" layoutY="175.0" prefHeight="34.0" prefWidth="236.0" />
+      <Text layoutX="33.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+      <PasswordField fx:id="textPassword" layoutX="32.0" layoutY="240.0" prefHeight="34.0" prefWidth="236.0" />
+      <Text layoutX="35.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <PasswordField fx:id="textConfirmPassword" layoutX="32.0" layoutY="307.0" prefHeight="34.0" prefWidth="236.0" />
+      <Text layoutX="33.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-Type Password" />
       <Button fx:id="editUserButton" layoutX="32.0" layoutY="370.0" onAction="#handleEditAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" stylesheets="@style.css" text="CONFIRM" />
-      <Button fx:id="cancelButton" layoutX="32.0" layoutY="420.0" onAction="#handleCancelAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" text="CANCEL" />
+      <Button fx:id="cancelButton" layoutX="32.0" layoutY="420.0" onAction="#handleCancelAction" prefHeight="42.0" prefWidth="236.0" styleClass="btn" stylesheets="@style.css" text="CANCEL" />
+      <FontAwesomeIcon fill="#1a3358" glyphName="USER" layoutX="126.0" layoutY="104.0" size="5em" text="" />
    </children>
 </AnchorPane>
