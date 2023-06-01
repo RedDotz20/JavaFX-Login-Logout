@@ -17,6 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-text-fill: #fff;
     -fx-font-size: 14px;
     -fx-font-family: Arial;
+    -fx-background-radius: 50;
 } 
 .btn:hover {
     -fx-background-color: #3A5579;
