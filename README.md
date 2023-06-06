@@ -17,6 +17,7 @@ This project has the following dependencies:
 - JavaFX: The JavaFX libraries are required to build and run the JavaFX application.
 - [MySQL connector J 8.0.33](https://dev.mysql.com/downloads/connector/j/)
 - [JDK 1.8 (default)](https://www.oracle.com/ph/java/technologies/javase/javase8-archive-downloads.html)
+- [font-awesome-fx 8.2](https://jar-download.com/artifacts/de.jensd/fontawesomefx/8.2/source-code)
 
 ## Create / Select MySQL Database
 
